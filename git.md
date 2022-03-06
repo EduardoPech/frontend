@@ -26,6 +26,10 @@ Para mostrar información del ultimó commit.
 
 `git show`
 
+Para mostrar el historial del archivo
+
+`git log [nombre del archivo]`
+
 Para enviar los cambios a un repositorio remoto
 
 `git push`
