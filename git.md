@@ -22,7 +22,7 @@ Para ver el estado de los archivos
 
 `git status`
 
-Para mostrar información del ultimó commit.
+Para mostrar información del ultimó commit y parte de los cambios en el código.
 
 `git show`
 
