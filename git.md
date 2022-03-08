@@ -53,3 +53,77 @@ Agregar configuración local
 `git config --local user.name "Eduardo Pech"`
 
 `git config --local user.email nombre@micorreo.com`
+
+# Linea de comandos
+
+Mostrar directorio actual
+
+`pwd`
+
+Cambiar de directorio
+
+`cd [carpeta]`
+
+Regresar a carpeta anterior
+
+`cd ..`
+
+Regresar a home
+
+`cd`
+
+Listar archivos y carpetas
+
+`ls`
+
+Listar archivos y carpetas formateados
+
+`ls -l`
+
+Listar archivos y carpetas ocultos
+
+`ls -a`
+
+Listar archivos y carpetas formateados (incluido los ocultos)
+
+`ls -la`
+
+crear una carpeta
+
+`mkdir [proyecto1]`
+
+Ir a la carpeta
+
+`cd proyecto1`
+
+Crear archivos vacios
+
+`touch archivo.txt`
+
+Escribir texto en el archivo
+
+`cat > archivo.txt`
+
+Mostrar contenido de archivo
+
+`cat archivo.txt`
+
+Ver comandos escritos
+
+`history`
+
+Invocar numero de comando
+
+`![numero]`
+
+Borrar archivos
+
+`rm archivo.txt`
+
+Ver opciones del comando
+
+`rm --help`
+
+Limpiar la consola
+
+`clear`
