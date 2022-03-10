@@ -127,3 +127,165 @@ Ver opciones del comando
 Limpiar la consola
 
 `clear`
+
+# Practica Repositorio
+
+### Configurar nuestro git con nuestros datos
+
+Para ver nuestra configuración
+
+`git config -- list`
+
+Para configuraración global
+
+`git config --global user.name "Eduardo Pech"`
+
+`git config --global user.email "eduardopech.web@gmail.com"`
+
+### Init GIT
+
+Crear un repositorio
+
+`git init`
+
+Ver archivo oculto de git
+
+`ls -al`
+
+Creas un archivo con texto
+
+`touch archivo.txt`
+
+Para ver estado de git
+
+`git status`
+
+Agregarlo al staging
+
+`git add archivo.txt`
+
+Para quitarlo del staging
+
+`git rm --cached archivo.txt`
+
+Para enviarlo al repositorio
+
+`git add archivo.txt`
+
+`git commit -m "Escribir el mensaje"`
+
+Revisar el estado
+
+`git status`
+
+### Corregir algo en el archivo
+
+Modificamos el archivo y guardamos cambios
+
+`git add archivo.txt`
+
+Ó para agregar todos
+
+`git add .`
+
+`git commit -m "Cambios hechos"`
+
+Para ver los cambios
+
+`git log archivo.txt`
+
+Nota: El commit tienen un numero que es el ID y esta en el head->master
+
+---
+
+Para ver los cambios por dentro
+
+`git show archivo.txt`
+
+Se agrega un nuevo cambio al archivo
+
+`git add .`
+
+`git commit -m "Mensaje del nuevo cambio"`
+
+Se agrega otro nuevo cambio al archivo
+
+`git add .`
+
+`git commit -m "Mensaje del nuevo cambio"`
+
+Ver cambios
+
+`git show`
+
+Ver cambios de un archivo entre archivo
+
+`git diff [id_commit] [id_commit]`
+
+## Proceso
+
+`git init`
+
+### Working Directory -> Mi carpeta -> unstracked
+
+`git add [archivo]`
+
+### Staging Area -> Espacio en memoria -> Track
+
+`git commit -m "Mensaje"`
+
+### .git directory(Repository) -> master
+
+---
+
+## Ramas Branches
+
+---
+
+### Master v1 v2 v3 v-actual
+
+### Experimentos(development) v2 -> v3 -v4 -> Merge -> To Master
+
+### Hotfix -> Cambio -> Merge -> To master
+
+Nota: Puede haber conflictos al hacer merge
+
+---
+
+Para ver los cambios
+
+`git log`
+
+Para regresar al estado anterior y elimina los cambios guardado en el staging
+
+`git reset [id_commit] --hard`
+
+Regresar al estado anterior pero mantiene el staging de los ultimos cambios
+
+`git reset [id_commit] --soft`
+
+Ver cambios
+
+`git diff`
+
+Para ver cambios especificos en el archivo
+
+`git log --stat`
+
+Para ver como era el archivo antes
+
+`git checkout [id_commit]`
+
+muestra el ultimo commit
+
+`git checkout master`
+
+Para regresar a la version anterior por completo
+
+`git checkout [id_commit] archivo.txt`
+
+Hago un cambio ahora en el archivo
+
+`git add .`
+
+`git commit -m "Hice un cambio"`
