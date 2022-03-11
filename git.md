@@ -405,3 +405,7 @@ Nota: Surgen conflictos cuando dos personas escriben codigo en la misma linea. E
 Para ver la fusion y los cambios en la rama master
 
 `git log`
+
+Cuando quieres hacer un git push de una rama que creaste en local y mandarlo al repositorio remoto
+
+`git push --set-upstream origin [name-branch]`
