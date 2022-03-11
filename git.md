@@ -256,17 +256,17 @@ Para ver los cambios
 
 `git log`
 
-Para regresar al estado anterior y elimina los cambios guardado en el staging
+Para regresar a un commit y mantiene en staging los ultimos cambios.
 
-`git reset [id_commit] --hard`
+`git reset [id_commit]`
 
-Regresar al estado anterior pero mantiene el staging de los ultimos cambios
+Regresar al estado anterior pero mantiene el staging de los ultimos cambios que se hicieron commit.
 
 `git reset [id_commit] --soft`
 
-Ver cambios
+Para regresar al estado anterior y elimina los cambios realizados en los commits anteriores
 
-`git diff`
+`git reset [id_commit] --hard`
 
 Para ver cambios especificos en el archivo
 
@@ -280,12 +280,46 @@ muestra el ultimo commit
 
 `git checkout master`
 
-Para regresar a la version anterior por completo
+---
 
-`git checkout [id_commit] archivo.txt`
+Para regresar a la version anterior
+
+`git checkout [id_commit]`
 
 Hago un cambio ahora en el archivo
 
 `git add .`
 
 `git commit -m "Hice un cambio"`
+
+Para crear una rama de ese commit y no perder los cambios
+
+`git branch <new-branch-name> [id_commit]`
+
+Para cambiar de rama
+
+`git checkout <name-branch>`
+
+Para regresar a master
+
+`git checkout master`
+
+Elimina los archivos de nuestro repositorio local y del área de staging, pero los mantiene en nuestro disco duro
+
+`git rm --cached [name-file]`
+
+Elimina los archivos de Git y del disco duro
+
+`git rm [name-file]`
+
+Es lo mismo que:
+
+`git rm --force [name-file]`
+
+Quita un archivo del staging sin perder los cambios
+
+`git restore --staged [name-file]`
+
+Descarta los cambios del archivo
+
+`git restore [name-file]`
