@@ -323,3 +323,85 @@ Quita un archivo del staging sin perder los cambios
 Descarta los cambios del archivo
 
 `git restore [name-file]`
+
+---
+
+## Flujos de trabajo remoto
+
+Para clonar un repositorio remoto
+
+`git clone [url]`
+
+El proceso es:
+
+`git add .`
+
+`git commit -m "Mensaje"`
+
+Para enviar al repositorio remoto
+
+`git push`
+
+Para traer una actualización del repositorio remoto a mi local
+
+`git fetch`
+
+Para que se vean los cambios en mis archivos es necesario hacer merge del origin
+
+`git merge origin/[master ó main]`
+
+Para hacer los dos al mismo tiempo fetch y merge
+
+`git pull`
+
+---
+
+### Ramas
+
+master ---> c1 ---> c2 (HEAD)
+
+Si nos movemos a un commit anterior se muestra asi
+
+master ---> c1(Detached HEAD) -> c2
+
+Creamos una rama
+
+`git branch resume`
+
+Para ver el ultimo commit y donde esta apuntando el HEAD
+
+`git show`
+
+Para moverme a la nueva rama
+
+`git checkout resume`
+
+Modificamos el archivo y agregamos los cambios
+
+`git add -am 'Mensaje'`
+
+Para ver los ultimos cambios
+
+`git log`
+
+Vemos que el HEAD esta ahora en nuestro nuevo commit pero master esta debajo.
+
+Hacemos 2 cambios en la rama nueva y hacer commit
+
+Hacemos 2 cambios en la rama de master o main y hacer commit
+
+Nos cambiamos a la rama master
+
+`git checkout [master o main]`
+
+Hacemos merge
+
+`git merge [rama nueva]`
+
+Si hay conflictos se solucionan y se hace un commit nuevamente.
+
+Nota: Surgen conflictos cuando dos personas escriben codigo en la misma linea. Entonces hay que decidir que código se va quedar al final.
+
+Para ver la fusion y los cambios en la rama master
+
+`git log`
