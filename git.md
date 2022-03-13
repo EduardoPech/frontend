@@ -409,3 +409,59 @@ Para ver la fusion y los cambios en la rama master
 Cuando quieres hacer un git push de una rama que creaste en local y mandarlo al repositorio remoto
 
 `git push --set-upstream origin [name-branch]`
+
+---
+
+## Uso de Github
+
+### Importante: Github cambio el nombre de la rama principal de `master` a `main` por cuestiones de racismo y discriminación.
+
+1.- Crear una cuenta en github
+
+2.- Crear un nuevo repositorio
+
+Readme es buena practica ponerlo para explicar el repositorio
+
+-Raw muestra el texto plano
+-Blame quien hizo el commit
+-History la historia del archivo
+
+3.- Clone or download para clonar o descargar
+
+---
+
+Para agregar un origen remoto a nuestro proyecto en local
+
+`git remote add origin [URL]`
+
+Para ver los remotos
+
+`git remote`
+
+Para ver los remotos verbal
+
+`git remote -v`
+
+Para quitar un remote
+
+`git remote remove [name-or-origin]`
+
+Para enviarlo al remoto
+
+`git push origin main`
+
+Si el repositorio remoto tiene archivos primero hay que traer los datos y luego hacer push.
+
+`git pull origin main`
+
+Para forzar la fusion del repo remoto y local si no se permite por las historias que son diferentes
+
+`git pull origin main --allow-unrelated-histories`
+
+`git push origin main`
+
+Ya se guardo todo en remoto!
+
+Para traer los cambios del remoto
+
+`git pull origin main`
