@@ -465,3 +465,311 @@ Ya se guardo todo en remoto!
 Para traer los cambios del remoto
 
 `git pull origin main`
+
+---
+
+## Llaves publicas y privadas
+
+- Las llaves públicas son llaves que permiten cifrar un mensaje. Estas llaves se pueden compartir con cualquier persona y no importa ya que solo sirven para cifrar.
+
+- Las llaves privadas son llaves que permiten descifrar mensajes cifrados con la llave pública. Esta llave tiene que guardarse en un lugar seguro ya que permitiría abrir cualquier mensaje cifrado. Está llave no debe compartirse con nadie.
+
+### Para configurar el SSH
+
+Primero recordamos nuestra configuración actual
+
+`git config -l`
+
+Para cambiar el email
+
+`git config --global user.email "tuemail@gmail.com"`
+
+Para crear nuestra llave SSH
+
+Hay que estar en el home de tu maquina
+
+`ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
+
+Y damos enter para guardarse y ya tenemos las 2 llaves. Sin frases
+
+Para agregar las key al ssh-agent
+
+`eval "$(ssh-agent -s)"`
+
+Si el archivo config no existe ~/.ssh/config los creamos
+
+`touch ~/.ssh/config`
+
+Para abrir y editar
+
+`open ~/.ssh/config`
+
+Y agregamos el contenido
+
+`Host * `
+
+`AddKeysToAgent yes`
+
+`IdentityFile ~/.ssh/id_rsa`
+
+Para añadir la identidad privada
+
+`ssh-add [direccion/.ssh/id_rsa]`
+
+NOTA: Ahora vamos a github en settings y agregamos nuestra llave publica
+
+Ahora vamos a cambiar nuestro repositorio remoto origin
+
+Para ver la lista de repositorios remotos
+
+`git remote -v`
+
+Para sobrescribir el origin
+
+`git remote set-url origin [MI-URL-SSH-DESDE-GITHUB]`
+
+Luego hacemos un cambio en algun archivo y subimos. Ya esta conectado.
+
+## Tags y versiones
+
+Para visualizar mejor los merge
+
+`git log --all --graph`
+
+`git log --all --graph --decorate --oneline`
+
+Crear un alias temporal para mejorar la legibilidad
+
+`alias arbolito="git log --all --graph --decorate --oneline"`
+
+Formato
+
+`alias shortName="your custom command here"`
+
+Si deseas quitar el alias
+
+`alias [name-alias]`
+
+Crear un tag
+
+`git tag -a v0.1 -m "Resultado de las primeras clases" [hash_commit]`
+
+Ver los tags que tenemos
+
+`git tag`
+
+Para ver que commit esta conectado un tag
+
+`git show-ref --tags`
+
+Los tags son utiles en github para referencia interna
+
+Para enviar los tags
+
+`git push origin --tags`
+
+Si creamos un tag que no nos gusta
+
+`git tag -a dormido -m "Lo que sea" [hash-commit]`
+
+`git push origin --tags`
+
+Si quiero borrar el tag dormido
+
+`git tag -d dormido`
+
+Para actualizar en github
+
+`git push origin --tags`
+
+Para ver si se borro
+
+`git tag`
+
+Pero si gue ahi y hay que borrarlo de una manera especial
+
+`git push origin :refs/tags/dormido`
+
+Y ya se borro por completo
+
+## Ramas en Github
+
+Para cambiar de rama
+
+`git checkout [nombre-rama]`
+
+Cuales son las ramas e historias
+
+`git show-branch --all`
+
+Para ver de manera visual las ramas, pero ya no funciona :(
+
+`gitk`
+
+Para ver ramas y en cual estamos
+
+`git branch`
+
+### Crear ramas
+
+Para crear ramas
+
+`git branch [nombre-rama]`
+
+`git push origin [nombre-rama]`
+
+Para cambiar de rama
+
+`git checkout [nombre-rama]`
+
+### Proceso de trabajo
+
+Para clonar un proyecto de Github
+
+`git clone [URL-project]`
+
+Hacemos un cambio al proyecto y commit
+
+`git commit -am "Mi primer commit"`
+
+`git pull origin master`
+
+`git push origin master`
+
+NOTA: Es importante que hay que agregar al colaborador al repositorio para que pueda realizar cambios.
+
+### Flujo de trabajo profesional
+
+- Rama Master -> Producción versión final
+
+- Rama Staging develop -> Server de prueba similar a producción. El lider del equipo debe siempre tener actualizado el develop desde master.
+
+- Cuando creamos un feature en una nueva rama y hacemos los cambios -> Enviamos los cambios a la rama develop -> Por medio de un Pull Request para que lo revisen -> Si es aprobado se aprueba y se hace merge en la rama develop.
+
+Si todo paso bien en staging. Procedemos a hacer pull request a la rama master.
+
+- Pull request -> Estado intermedio entre un merge. Esto es una caracteristica exclusiva de Github.
+
+- Merge request -> Asi se llama en Gitlab
+
+- Push request -> Asi se llama en Bitbucket
+
+La persona encargada de esto es el DevOps o lider de equipo.
+
+### El flujo cuando es parte del equipo
+
+1. Cambios en la rama X
+2. Cuando vamos a fusionar los cambios terminados de la rama X vamos a movernos a la rama principal master o main.
+
+- `git checkout [master-o-main]`
+
+  3.Luego hacemos merge
+
+- `git merge [ramaX]`
+
+Y listo.
+
+### Flujo cuando alguien no es parte del equipo
+
+1. Hacemos cambios en una rama X
+2. El admin del repositorio va a Github y mirá que hay cambios nuevos en la otra rama. Se mueve a master y desde master le da click en Crear Pull Request.
+3. Una vez creado se agregan los comentarios y se asignan revisores.
+4. El revisor puede aprobar o solicitar cambios a la rama para poder aceptar el pull request.
+5. Una vez aceptado el pull request se fusiona la rama X con la rama master.
+6. Al final podemos eliminar la rama X ya que no será de utilidad.
+
+### Flujo cuando alguien está fuera de la empresa. Opensource
+
+Nota: NO es coloborador y es un repositorio público.
+
+Watch: Me llegan notificaciones del proyecto
+Star: Agregamos el repositorio a nuestros favoritos y como si fuera me gusta.
+Fork: Se crea una copia en nuestro repositorio
+
+Los pasos son:
+
+0. Vamos al repositorio open source
+
+1. Fork(Bifurcación) : Creamos una copia del estado actual
+
+2. Traemos el proyecto a nuestro local
+
+`git clone [URL-REPO-FORKEADO]`
+
+3. Abrimos un archivo y lo modificamos
+
+`git commit -am "Cambios que hicimos"`
+
+4. Subimos al repo en Github
+
+`git push`
+
+5. Verificamos nuestro repositorio en Github y tenemos los cambios arriba.
+
+6. Github sabe que tenemos forkeado el proyecto y sabe que hay una diferencia. Damos click en `New pull re quest`
+
+7. Me abre una interfaz donde podemos comparar los 2 repositorios para ver que cambio. Podemos elegir las ramas a comparar. Damos click en `Create pull request`
+
+8. Es como hacer un commit, titulo y mensaje de contribución. Click en `Crear pull request`. Y el pull request ha sido creado.
+
+9. Hay que esperar que se apruebe o se rechaze.
+
+### Otro proceso es parte del dueño del proyecto
+
+1. Me llega una notifiación de pull request.
+
+2. Se ve la pantalla que una persona quiere agregar cambios al proyecto con titulo y mensaje. Además podemos ver los commits y archivos que cambiaron.
+
+Si vemos que los cambios son correctos podemos aprobar los cambios.
+
+Click en `review changes` y `Approve` y `OK`
+
+3. Damos click en `Merge pull request`
+
+4. Ya se realizo los cambios
+
+### Si el open source tiene cambios adelante del fork
+
+Desde la consola
+
+1. Checamos nuestros remote
+
+`git remote -v`
+
+Vamos que origin apunta nuestro repositorio forkeado
+
+2. Asi que tenemos que tener un link directo al proyecto original
+
+`git remote add upstream [URL-REPO-ORIGINAL]`
+
+Vemos que existe una nueva fuente de datos
+
+`git remote -v`
+
+3. Hacemos un git pull desde el master o main
+
+`git pull upstream main`
+
+Asi traemos todos los cambios
+
+4. Ahora hacemos un commit
+
+`git commit -am "Fusion"`
+
+5. Ahora enviamos a nuestro repo forkeado en Github
+
+`git push origin main`
+
+6. Verificamos que tenemos todos los cambios de repositorio original.
+
+## Deploy en el servidor
+
+1. Entrar al servidor
+
+2. Instalamos git
+
+3. Traemos nuestro repositorio
+
+`git clone [URL]`
+
+4. Listo
